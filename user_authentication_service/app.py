@@ -15,6 +15,7 @@ def hello_world():
     """ hello world """
     return jsonify({"message": "Bienvenue"})
 
+
 @app.route('/users', methods=['POST'])
 def register_user():
     """ Register a user """
