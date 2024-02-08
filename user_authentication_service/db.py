@@ -30,3 +30,12 @@ class DB:
         self._session.add(user)
         self._session.commit()
         return user
+
+    def find_user_by(self, **kwargs) -> User:
+        """ DB.find_user_by method"""
+        if not kwargs:
+            raise InvalidRequestError
+        for key in kwargs:
+            if not hasattr(User, key):
+                raise InvalidRequestError
+        return self._session.query(User).filter_by(**kwargs).one()
